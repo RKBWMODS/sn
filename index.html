@@ -700,6 +700,121 @@
             background: var(--light-accent);
             box-shadow: 0 0 8px var(--light-glow);
         }
+        
+        /* Bagian Informasi Baru */
+        .info-section {
+            max-width: 640px;
+            margin: 30px auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .info-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .info-card {
+            background: var(--dark-card-bg);
+            backdrop-filter: var(--glass-filter);
+            border-radius: 15px;
+            border: 1px solid var(--dark-border);
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: var(--transition);
+        }
+        
+        body.light-mode .info-card {
+            background: var(--light-card-bg);
+            border: 1px solid var(--light-border);
+        }
+        
+        .info-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-accent);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        body.light-mode .info-title {
+            color: var(--light-accent);
+        }
+        
+        .info-title i {
+            font-size: 15px;
+        }
+        
+        .info-content {
+            font-size: 13px;
+            line-height: 1.7;
+            color: var(--dark-text-secondary);
+        }
+        
+        body.light-mode .info-content {
+            color: var(--light-text-secondary);
+        }
+        
+        .info-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+        
+        .info-list li {
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
+        .info-list li::before {
+            content: "•";
+            color: var(--dark-accent);
+            position: absolute;
+            left: -15px;
+        }
+        
+        body.light-mode .info-list li::before {
+            color: var(--light-accent);
+        }
+        
+        .highlight {
+            color: var(--dark-accent);
+            font-weight: 400;
+        }
+        
+        body.light-mode .highlight {
+            color: var(--light-accent);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            color: var(--dark-text-secondary);
+        }
+        
+        body.light-mode .contact-item {
+            color: var(--light-text-secondary);
+        }
+        
+        .contact-icon {
+            color: var(--dark-accent);
+            font-size: 16px;
+        }
+        
+        body.light-mode .contact-icon {
+            color: var(--light-accent);
+        }
     </style>
 </head>
 <body>
@@ -790,6 +905,57 @@
             </div>
             <div class="btn btn-dummy"></div> 
         </div>
+        
+        <!-- Bagian Informasi Baru -->
+        <h2 class="sec-title" id="aboutTitle">TENTANG SAYA</h2>
+        <div class="info-section" id="aboutSection">
+            <div class="info-card">
+                <h3 class="info-title"><i class="fas fa-user"></i> INORMASI</h3>
+                <div class="info-content">
+                    <p>Saya adalah bernama dizflyze, Dengan pengalaman lebih dari 3 tahun di bicang coding di ponsel, Dengan skill saya saya mampu memberikan bukti bahwa coding bisa dimana saja.</p>
+                    
+                    <p>Selain itu, saya aktif membuat konten di platform YouTube dan TikTok</p>
+                    
+                    <p class="highlight">"Terimakasih sudah berkunjung"</p>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="sec-title" id="servicesInfoTitle">LAYANAN SAYA</h2>
+        <div class="info-section" id="servicesInfoSection">
+            <div class="info-card">
+                <h3 class="info-title"><i class="fas fa-cogs"></i> RINGKASAN</h3>
+                <div class="info-content">
+                    <ul class="info-list">
+                        <li><strong>Top Up Game:</strong> Mobile Legends dan Free Fire</li>
+                        <li><strong>Joki Akun:</strong> Rank up, win rate, dan berbagai peningkatan akun game</li>
+                        <li><strong>Pembuatan Website:</strong> Portfolio, toko online, blog, landing page, dan web custom</li>
+                        <li><strong>Pembuatan Script:</strong> Bot otomatisasi, tools khusus, dan pemrograman lainnya</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <h2 class="sec-title" id="contactTitle">HUBUNGI SAYA</h2>
+        <div class="info-section" id="contactSection">
+            <div class="info-card">
+                <h3 class="info-title"><i class="fas fa-address-card"></i> KONTAK</h3>
+                <div class="info-content">
+                    <p>Untuk informasi lebih lanjut, kolaborasi, atau pertanyaan tentang layanan saya, silakan hubungi melalui:</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope contact-icon"></i>
+                            <span>dizflyze@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone contact-icon"></i>
+                            <span>+6288980724038</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="footer" id="footer">
         Developer © dizflyze
@@ -801,7 +967,7 @@
                 setTimeout(() => {
                     loadingScreen.classList.add('hidden');
                     initMainContent();
-                }, 3500);
+                }, 4000);
             });
         });
         function initMainContent() {
@@ -892,7 +1058,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.header, .sec-title, .btn, .footer, .decorative-corner').forEach(el => {
+            document.querySelectorAll('.header, .sec-title, .btn, .footer, .decorative-corner, .info-section').forEach(el => {
                 observer.observe(el);
             });
             const buttons = document.querySelectorAll('.btn');
