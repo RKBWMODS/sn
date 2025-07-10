@@ -22,12 +22,10 @@
             justify-content: center;
             transition: opacity 0.5s ease;
         }
-        
         .loading-screen.hidden {
             opacity: 0;
             pointer-events: none;
         }
-        
         .loader-wrapper {
             display: flex;
             align-items: center;
@@ -35,7 +33,6 @@
             width: 100%;
             height: 100%;
         }
-        
         .loader {
             position: relative;
             width: 250px;
@@ -44,7 +41,6 @@
             align-items: center;
             justify-content: center;
         }
-        
         .logo {
             width: 70px;
             height: 70px;
@@ -53,35 +49,30 @@
             animation: logoPulse 2s infinite ease-in-out;
             will-change: transform;
         }
-        
         .ring {
             position: absolute;
             border-radius: 50%;
             border: 5px solid transparent;
             will-change: transform;
         }
-        
         .ring.blue {
             width: 130px;
             height: 130px;
             border-top-color: red;
             animation: rotate-cw 1.5s linear infinite;
         }
-        
         .ring.yellow {
             width: 110px;
             height: 110px;
             border-top-color: yellow;
             animation: rotate-ccw 2s linear infinite;
         }
-        
         .ring.green1 {
             width: 90px;
             height: 90px;
             border-top-color: lime;
             animation: green1 4s ease-in-out infinite;
         }
-        
         .ring.green2 {
             width: 90px;
             height: 90px;
@@ -89,17 +80,14 @@
             transform: rotate(180deg);
             animation: green2 4s ease-in-out infinite;
         }
-        
         @keyframes rotate-cw {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
         @keyframes rotate-ccw {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(-360deg); }
         }
-        
         @keyframes green1 {
             0% { transform: rotate(0deg); }
             25% { transform: rotate(180deg); }
@@ -107,7 +95,6 @@
             75% { transform: rotate(180deg); }
             100% { transform: rotate(0deg); }
         }
-        
         @keyframes green2 {
             0% { transform: rotate(0deg); }
             25% { transform: rotate(-180deg); }
@@ -115,13 +102,11 @@
             75% { transform: rotate(-180deg); }
             100% { transform: rotate(0deg); }
         }
-        
         @keyframes logoPulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.1); }
             100% { transform: scale(1); }
         }
-        
         :root {
             --dark-bg-primary: #0a0e17;
             --dark-bg-secondary: #121a2b;
@@ -225,8 +210,7 @@
             0% { transform: translateY(0) translateX(0); }
             100% { transform: translateY(-100vh) translateX(20px); }
         }
-        
-        .theme-toggle {
+        .tema {
             position: fixed;
             top: 25px;
             right: 25px;
@@ -247,26 +231,45 @@
             will-change: transform, box-shadow;
         }
         
-        .theme-toggle:hover {
+        .tema:hover {
             transform: scale(1.05);
             box-shadow: 0 0 20px var(--dark-glow);
         }
         
-        body.light-mode .theme-toggle {
+        body.light-mode .tema {
             background: var(--light-card-bg);
             border: 1px solid var(--light-border);
         }
         
-        body.light-mode .theme-toggle:hover {
+        body.light-mode .tema:hover {
             box-shadow: 0 0 20px var(--light-glow);
         }
         
-        .theme-toggle i {
+        .tema i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             font-size: 22px;
-            transition: var(--transition);
+            transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
         }
-        
-        .theme-toggle::before {
+        .tema .icon-moon {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+        .tema .icon-sun {
+            opacity: 0;
+            transform: translate(-50%, 30px);
+        }
+        body.light-mode .tema .icon-moon {
+            opacity: 0;
+            transform: translate(-50%, -30px);
+        }
+        body.light-mode .tema .icon-sun {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+        .tema::before {
             content: '';
             position: absolute;
             top: 0;
@@ -280,8 +283,7 @@
             opacity: 0;
             transition: opacity 0.5s ease;
         }
-        
-        .theme-toggle.active::before {
+        .tema.active::before {
             opacity: 1;
             animation: gradientRotate 1.5s linear;
         }
@@ -316,7 +318,7 @@
             transform: translateY(0);
         }
         
-        .avatar-container {
+        .logo-cont {
             position: relative;
             margin-bottom: 15px;
             transform: translateZ(0);
@@ -415,7 +417,7 @@
             color: var(--light-text-secondary);
         }
         
-        .section-title {
+        .sec-title {
             font-size: 15px;
             font-weight: 600;
             text-transform: uppercase;
@@ -433,12 +435,12 @@
             margin-right: auto; 
         }
         
-        .section-title.visible {
+        .sec-title.visible {
             opacity: 1;
             transform: translateX(0);
         }
         
-        body.light-mode .section-title {
+        body.light-mode .sec-title {
             color: var(--light-text-secondary);
             border-left: 2px solid var(--light-accent);
         }
@@ -494,8 +496,7 @@
             background: var(--light-card-bg);
             border: 1px solid var(--light-border);
             color: var(--light-text-primary);
-        }
-        
+        }        
         .btn::before {
             content: '';
             position: absolute;
@@ -507,28 +508,23 @@
             opacity: 0;
             transition: var(--transition);
             will-change: transform, opacity;
-        }
-        
+        }       
         .btn:hover {
             transform: translateY(-4px) scale(1.02);
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
             border-color: var(--dark-accent);
-        }
-        
+        }       
         .btn:hover::before {
             opacity: 1;
             animation: shine 1.5s;
-        }
-        
+        }        
         body.light-mode .btn:hover {
             border-color: var(--light-accent);
-        }
-        
+        }        
         @keyframes shine {
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
-        }
-        
+        }        
         .btn-icon {
             width: 40px;
             height: 40px;
@@ -542,35 +538,29 @@
             color: var(--dark-accent);
             transition: var(--transition);
             will-change: transform, box-shadow;
-        }
-        
+        }        
         body.light-mode .btn-icon {
             background: rgba(0, 114, 245, 0.1);
             color: var(--light-accent);
-        }
-        
+        }     
         .btn:hover .btn-icon {
             transform: scale(1.1);
             box-shadow: 0 0 12px var(--dark-glow);
             animation: iconPulse 0.6s ease;
-        }
-        
+        }       
         body.light-mode .btn:hover .btn-icon {
             box-shadow: 0 0 12px var(--light-glow);
-        }
-        
+        }        
         @keyframes iconPulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.15); }
             100% { transform: scale(1.1); }
-        }
-        
+        }        
         .btn-text {
             flex: 1;
             text-align: left;
             font-weight: 600;
-        }
-        
+        }       
         .footer {
             text-align: center;
             padding: 30px 0 20px;
@@ -579,57 +569,46 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.8s ease;
-        }
-        
+        }        
         .footer.visible {
             opacity: 1;
             transform: translateY(0);
-        }
-        
+        }       
         body.light-mode .footer {
             color: var(--light-text-secondary);
-        }
-        
+        }        
         @media (max-width: 768px) {
             .container {
                 padding: 80px 15px 30px;
-            }
-            
+            }            
             .buttons-grid {
                 grid-template-columns: 1fr;
                 justify-content: normal;
                 max-width: 100%;
-            }
-            
-            .section-title {
+            }            
+            .sec-title {
                 max-width: 100%;
                 margin-left: 15px;
                 margin-right: 15px;
-            }
-            
+            }            
             .avatar {
                 width: 90px;
                 height: 90px;
-            }
-            
+            }           
             .avatar-glow {
                 width: 100px;
                 height: 100px;
-            }
-            
+            }            
             .username {
                 font-size: 15px;
-            }
-            
+            }           
             .subtext {
                 font-size: 14px;
-            }
-            
+            }            
             .btn {
                 padding: 14px 18px;
                 font-size: 14px;
-            }
-            
+            }            
             .btn-icon {
                 width: 36px;
                 height: 36px;
@@ -639,28 +618,24 @@
             .btn-dummy {
                 display: none;
             }
-        }
-        
+        }        
         @media (max-width: 480px) {
-            .theme-toggle {
+            .tema {
                 top: 15px;
                 right: 15px;
                 width: 40px;
                 height: 40px;
-            }
-            
-            .section-title {
+            }            
+            .sec-title {
                 font-size: 14px;
                 margin: 30px 0 12px;
                 padding-left: 15px;
-            }
-            
+            }            
             .btn {
                 padding: 12px 16px;
                 border-radius: 45px;
             }
-        }
-        
+        }        
         .decorative-corner {
             position: absolute;
             width: 70px;
@@ -669,8 +644,7 @@
             opacity: 0.3;
             z-index: -1;
             transition: all 1s ease;
-        }
-        
+        }        
         .corner-tl {
             top: 15px;
             left: 15px;
@@ -678,8 +652,7 @@
             border-bottom: none;
             transform: translate(-15px, -15px);
             opacity: 0;
-        }
-        
+        }      
         .corner-tr {
             top: 15px;
             right: 15px;
@@ -687,8 +660,7 @@
             border-bottom: none;
             transform: translate(15px, -15px);
             opacity: 0;
-        }
-        
+        }       
         .corner-bl {
             bottom: 15px;
             left: 15px;
@@ -696,8 +668,7 @@
             border-top: none;
             transform: translate(-15px, 15px);
             opacity: 0;
-        }
-        
+        }        
         .corner-br {
             bottom: 15px;
             right: 15px;
@@ -705,18 +676,15 @@
             border-top: none;
             transform: translate(15px, 15px);
             opacity: 0;
-        }
-        
+        }      
         .corner-tl.visible, .corner-tr.visible, 
         .corner-bl.visible, .corner-br.visible {
             transform: translate(0, 0);
             opacity: 0.3;
-        }
-        
+        }       
         body.light-mode .decorative-corner {
             border-color: var(--light-accent);
-        }
-        
+        }       
         .scroll-progress {
             position: fixed;
             top: 0;
@@ -727,8 +695,7 @@
             z-index: 1000;
             transition: width 0.2s ease-out;
             box-shadow: 0 0 8px var(--dark-glow);
-        }
-        
+        }       
         body.light-mode .scroll-progress {
             background: var(--light-accent);
             box-shadow: 0 0 8px var(--light-glow);
@@ -752,22 +719,23 @@
     <div class="decorative-corner corner-tl"></div>
     <div class="decorative-corner corner-tr"></div>
     <div class="decorative-corner corner-bl"></div>
-    <div class="decorative-corner corner-br"></div>
-    <div class="theme-toggle" id="themeToggle">
-        <i class="fas fa-moon"></i>
-    </div>
+    <div class="decorative-corner corner-br"></div>    
+    <div class="tema" id="Mode">
+        <i class="fas fa-moon icon-moon"></i>
+        <i class="fas fa-sun icon-sun"></i>
+    </div>    
     <div class="container">
         <div class="header" id="header">
-            <div class="avatar-container">
+            <div class="logo-cont">
                 <div class="avatar-glow"></div>
                 <img src="https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752062305/k6ddbc76uyomrd3yoop1.jpg" alt="dizflyze" class="avatar">
             </div>
             <h1 class="username">
                 @dizflyze <i class="fas fa-check-circle verified"></i>
             </h1>
-            <p class="subtext">GIVE ME COFFE BRO THANKS YOU</p>
+            <p class="subtext">GIVE ME COFFEE BRO THANKS YOU</p>
         </div>
-        <h2 class="section-title" id="topupTitle">TOP UP & JB GAME</h2>
+        <h2 class="sec-title" id="topupTitle">TOP UP & JB GAME</h2>
         <div class="buttons-grid">
             <div class="btn" id="mlBtn">
                 <div class="btn-icon">
@@ -782,7 +750,7 @@
                 <div class="btn-text">FREE FIRE</div>
             </div>
         </div>
-        <h2 class="section-title" id="servicesTitle">MENERIMA JASA</h2>
+        <h2 class="sec-title" id="servicesTitle">MENERIMA JASA</h2>
         <div class="buttons-grid">
             <div class="btn" id="webBtn">
                 <div class="btn-icon">
@@ -797,7 +765,7 @@
                 <div class="btn-text">PEMBUATAN SCRIPT</div>
             </div>
         </div>
-        <h2 class="section-title" id="servicesTitle">SOSIAL MEDIA</h2>
+        <h2 class="sec-title" id="servicesTitle">SOSIAL MEDIA</h2>
         <div class="buttons-grid">
             <div class="btn" id="ytBtn">
                 <div class="btn-icon">
@@ -812,7 +780,7 @@
                 <div class="btn-text">TIKTOK</div>
             </div>
         </div>
-        <h2 class="section-title" id="supportTitle">DUKUNG SAYA</h2>
+        <h2 class="sec-title" id="supportTitle">DUKUNG SAYA</h2>
         <div class="buttons-grid">
             <div class="btn" id="danaBtn">
                 <div class="btn-icon">
@@ -829,7 +797,6 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const loadingScreen = document.getElementById('loadingScreen');
-            
             window.addEventListener('load', function() {
                 setTimeout(() => {
                     loadingScreen.classList.add('hidden');
@@ -837,133 +804,106 @@
                 }, 3500);
             });
         });
-
         function initMainContent() {
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 25;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.classList.add('particle');
-        
-        const size = Math.random() * 5 + 2;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const delay = Math.random() * 9;
-        const duration = Math.random() * 7 + 7;
-        
-        particle.style.width = `${size}px`;
-        particle.style.height = `${size}px`;
-        particle.style.left = `${posX}%`;
-        particle.style.top = `${posY}%`;
-        particle.style.animationDelay = `${delay}s`;
-        particle.style.animationDuration = `${duration}s`;
-        
-        particlesContainer.appendChild(particle);
-    }
-    
-    const themeToggle = document.getElementById('themeToggle');
-    themeToggle.addEventListener('click', function() {
-        document.body.classList.toggle('light-mode');
-        
-        const icon = themeToggle.querySelector('i');
-        if (document.body.classList.contains('light-mode')) {
-            icon.classList.remove('fa-moon');
-            icon.classList.add('fa-sun');
-            themeToggle.classList.add('active');
-            setTimeout(() => themeToggle.classList.remove('active'), 1500);
-        } else {
-            icon.classList.remove('fa-sun');
-            icon.classList.add('fa-moon');
-            themeToggle.classList.add('active');
-            setTimeout(() => themeToggle.classList.remove('active'), 1500);
-        }
-    });
-    
-    // ===========  BAGIAN SETELAH CLICK BUTON =========== 
-    
-    document.getElementById('ttBtn').addEventListener('click', function() {
-        this.classList.add('active');
-        setTimeout(() => {
-            window.open('https://tiktok.com/@dizflyze', '_blank');
-            this.classList.remove('active');
-        }, 1000);
-    });
-    document.getElementById('mlBtn').addEventListener('click', function() {
-        this.classList.add('active');
-        setTimeout(() => {
-            window.open('https://wa.me/6288980724038', '_blank');
-            this.classList.remove('active');
-        }, 1000);
-    });
-    document.getElementById('scBtn').addEventListener('click', function() {
-        this.classList.add('active');
-        setTimeout(() => {
-            window.open('https://wa.me/6288980724038', '_blank');
-            this.classList.remove('active');
-        }, 1000);
-    });
-    document.getElementById('danaBtn').addEventListener('click', function() {
-        this.classList.add('active');
-        setTimeout(() => {
-            window.open('https://link.dana.id/minta?full_url=https://qr.dana.id/v1/281012092025071057356965', '_blank');
-            this.classList.remove('active');
-        }, 1000);
-    });
-    document.getElementById('ytBtn').addEventListener('click', function() {
-        this.classList.add('active');
-        setTimeout(() => {
-            window.open('https://youtube.com/@dizflyze999', '_blank');
-            this.classList.remove('active');
-        }, 1000);
-    });
-    document.getElementById('webBtn').addEventListener('click', function() {
-        this.classList.add('active');
-        setTimeout(() => {
-            window.open('https://wa.me/6288980724038', '_blank');
-            this.classList.remove('active');
-        }, 1000);
-    });
-    document.getElementById('ffBtn').addEventListener('click', function() {
-        this.classList.add('active');
-        setTimeout(() => {
-            window.open('https://wa.me/6288980724038', '_blank');
-            this.classList.remove('active');
-        }, 1000);
-    });
-    
-    // =========== LANJUAN ===========
-
-    const scrollProgress = document.getElementById('scrollProgress');
-    window.addEventListener('scroll', function() {
-        const scrollTop = document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-        const scrolled = (scrollTop / scrollHeight) * 100;
-        scrollProgress.style.width = `${scrolled}%`;
-    });
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 25;
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                const size = Math.random() * 5 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 9;
+                const duration = Math.random() * 7 + 7;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${posX}%`;
+                particle.style.top = `${posY}%`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                particlesContainer.appendChild(particle);
             }
-        });
-    }, { threshold: 0.1 });
-    
-    document.querySelectorAll('.header, .section-title, .btn, .footer, .decorative-corner').forEach(el => {
-        observer.observe(el);
-    });
-    
-    const buttons = document.querySelectorAll('.btn');
-    buttons.forEach(btn => {
-        btn.addEventListener('click', function() {
-            this.classList.add('active');
-            setTimeout(() => this.classList.remove('active'), 500);
-        });
-    });
-    
-    document.documentElement.style.overflow = 'auto';
-}
-</script>
+            const Mode = document.getElementById('Mode');
+            Mode.addEventListener('click', function() {
+                document.body.classList.toggle('light-mode');
+                Mode.classList.add('active');
+                setTimeout(() => Mode.classList.remove('active'), 1500);
+            });
+            document.getElementById('ttBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                setTimeout(() => {
+                    window.open('https://tiktok.com/@dizflyze', '_blank');
+                    this.classList.remove('active');
+                }, 1000);
+            });
+            document.getElementById('mlBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                setTimeout(() => {
+                    window.open('https://wa.me/6288980724038', '_blank');
+                    this.classList.remove('active');
+                }, 1000);
+            });
+            document.getElementById('scBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                setTimeout(() => {
+                    window.open('https://wa.me/6288980724038', '_blank');
+                    this.classList.remove('active');
+                }, 1000);
+            });
+            document.getElementById('danaBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                setTimeout(() => {
+                    window.open('https://link.dana.id/minta?full_url=https://qr.dana.id/v1/281012092025071057356965', '_blank');
+                    this.classList.remove('active');
+                }, 1000);
+            });
+            document.getElementById('ytBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                setTimeout(() => {
+                    window.open('https://youtube.com/@dizflyze999', '_blank');
+                    this.classList.remove('active');
+                }, 1000);
+            });
+            document.getElementById('webBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                setTimeout(() => {
+                    window.open('https://wa.me/6288980724038', '_blank');
+                    this.classList.remove('active');
+                }, 1000);
+            });
+            document.getElementById('ffBtn').addEventListener('click', function() {
+                this.classList.add('active');
+                setTimeout(() => {
+                    window.open('https://wa.me/6288980724038', '_blank');
+                    this.classList.remove('active');
+                }, 1000);
+            });
+            const scrollProgress = document.getElementById('scrollProgress');
+            window.addEventListener('scroll', function() {
+                const scrollTop = document.documentElement.scrollTop;
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (scrollTop / scrollHeight) * 100;
+                scrollProgress.style.width = `${scrolled}%`;
+            });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.header, .sec-title, .btn, .footer, .decorative-corner').forEach(el => {
+                observer.observe(el);
+            });
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.classList.add('active');
+                    setTimeout(() => this.classList.remove('active'), 500);
+                });
+            });
+            document.documentElement.style.overflow = 'auto';
+        }
+    </script>
 </body>
 </html>
