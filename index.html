@@ -417,7 +417,7 @@
             color: var(--light-text-secondary);
         }
         
-        .sec-title {
+        .stit {
             font-size: 15px;
             font-weight: 600;
             text-transform: uppercase;
@@ -435,17 +435,17 @@
             margin-right: auto; 
         }
         
-        .sec-title.visible {
+        .stit.visible {
             opacity: 1;
             transform: translateX(0);
         }
         
-        body.light-mode .sec-title {
+        body.light-mode .stit {
             color: var(--light-text-secondary);
             border-left: 2px solid var(--light-accent);
         }
         
-        .buttons-grid {
+        .butg {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             justify-content: center;
@@ -581,12 +581,12 @@
             .container {
                 padding: 80px 15px 30px;
             }            
-            .buttons-grid {
+            .butg {
                 grid-template-columns: 1fr;
                 justify-content: normal;
                 max-width: 100%;
             }            
-            .sec-title {
+            .stit {
                 max-width: 100%;
                 margin-left: 15px;
                 margin-right: 15px;
@@ -626,7 +626,7 @@
                 width: 40px;
                 height: 40px;
             }            
-            .sec-title {
+            .stit {
                 font-size: 14px;
                 margin: 30px 0 12px;
                 padding-left: 15px;
@@ -700,9 +700,7 @@
             background: var(--light-accent);
             box-shadow: 0 0 8px var(--light-glow);
         }
-        
-        /* Bagian Informasi Baru */
-        .info-section {
+        .info-sec {
             max-width: 640px;
             margin: 30px auto;
             opacity: 0;
@@ -710,7 +708,7 @@
             transition: all 0.6s ease;
         }
         
-        .info-section.visible {
+        .info-sec.visible {
             opacity: 1;
             transform: translateY(0);
         }
@@ -850,8 +848,8 @@
             </h1>
             <p class="subtext">GIVE ME COFFEE BRO THANKS YOU</p>
         </div>
-        <h2 class="sec-title" id="topupTitle">TOP UP & JB GAME</h2>
-        <div class="buttons-grid">
+        <h2 class="stit" id="topupTitle">TOP UP & JB GAME</h2>
+        <div class="butg">
             <div class="btn" id="mlBtn">
                 <div class="btn-icon">
                     <i class="fas fa-gamepad"></i>
@@ -865,8 +863,8 @@
                 <div class="btn-text">FREE FIRE</div>
             </div>
         </div>
-        <h2 class="sec-title" id="servicesTitle">MENERIMA JASA</h2>
-        <div class="buttons-grid">
+        <h2 class="stit" id="servicesTitle">MENERIMA JASA</h2>
+        <div class="butg">
             <div class="btn" id="webBtn">
                 <div class="btn-icon">
                     <i class="fas fa-code"></i>
@@ -880,8 +878,8 @@
                 <div class="btn-text">PEMBUATAN SCRIPT</div>
             </div>
         </div>
-        <h2 class="sec-title" id="servicesTitle">SOSIAL MEDIA</h2>
-        <div class="buttons-grid">
+        <h2 class="stit" id="servicesTitle">SOSIAL MEDIA</h2>
+        <div class="butg">
             <div class="btn" id="ytBtn">
                 <div class="btn-icon">
                     <i class="fab fa-youtube"></i>
@@ -895,8 +893,8 @@
                 <div class="btn-text">TIKTOK</div>
             </div>
         </div>
-        <h2 class="sec-title" id="supportTitle">DUKUNG SAYA</h2>
-        <div class="buttons-grid">
+        <h2 class="stit" id="supportTitle">DUKUNG SAYA</h2>
+        <div class="butg">
             <div class="btn" id="danaBtn">
                 <div class="btn-icon">
                     <i class="fas fa-wallet"></i>
@@ -905,14 +903,12 @@
             </div>
             <div class="btn btn-dummy"></div> 
         </div>
-        
-        <!-- Bagian Informasi Baru -->
-        <h2 class="sec-title" id="aboutTitle">TENTANG SAYA</h2>
-        <div class="info-section" id="aboutSection">
+        <h2 class="stit" id="aboutTitle">TENTANG SAYA</h2>
+        <div class="info-sec" id="aboutSection">
             <div class="info-card">
                 <h3 class="info-title"><i class="fas fa-user"></i> INORMASI</h3>
                 <div class="info-content">
-                    <p>Saya adalah bernama dizflyze, Dengan pengalaman lebih dari 3 tahun di bicang coding di ponsel, Dengan skill saya saya mampu memberikan bukti bahwa coding bisa dimana saja.</p>
+                    <p>Saya bernama dizflyze, Dengan pengalaman lebih dari 4 tahun di bidang coding via ponsel, Dengan skill saya saya mampu memberikan bukti bahwa coding bisa dimana saja.</p>
                     
                     <p>Selain itu, saya aktif membuat konten di platform YouTube dan TikTok</p>
                     
@@ -921,8 +917,8 @@
             </div>
         </div>
         
-        <h2 class="sec-title" id="servicesInfoTitle">LAYANAN SAYA</h2>
-        <div class="info-section" id="servicesInfoSection">
+        <h2 class="stit" id="sit">LAYANAN SAYA</h2>
+        <div class="info-sec" id="sis">
             <div class="info-card">
                 <h3 class="info-title"><i class="fas fa-cogs"></i> RINGKASAN</h3>
                 <div class="info-content">
@@ -934,10 +930,9 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        
-        <h2 class="sec-title" id="contactTitle">HUBUNGI SAYA</h2>
-        <div class="info-section" id="contactSection">
+        </div>       
+        <h2 class="stit" id="contactTitle">HUBUNGI SAYA</h2>
+        <div class="info-sec" id="contactSection">
             <div class="info-card">
                 <h3 class="info-title"><i class="fas fa-address-card"></i> KONTAK</h3>
                 <div class="info-content">
@@ -1058,7 +1053,7 @@
                     }
                 });
             }, { threshold: 0.1 });
-            document.querySelectorAll('.header, .sec-title, .btn, .footer, .decorative-corner, .info-section').forEach(el => {
+            document.querySelectorAll('.header, .stit, .btn, .footer, .decorative-corner, .info-sec').forEach(el => {
                 observer.observe(el);
             });
             const buttons = document.querySelectorAll('.btn');
