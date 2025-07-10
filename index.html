@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIVE ME COFFEE</title>
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -49,12 +51,14 @@
             z-index: 10;
             border-radius: 50%;
             animation: logoPulse 2s infinite ease-in-out;
+            will-change: transform;
         }
         
         .ring {
             position: absolute;
             border-radius: 50%;
-            border: 6px solid transparent;
+            border: 5px solid transparent;
+            will-change: transform;
         }
         
         .ring.blue {
@@ -166,7 +170,7 @@
             transition: background 1s ease;
             will-change: background;
             opacity: 0;
-            animation: fadeIn 0.5s ease 2.1s forwards;
+            animation: fadeIn 0.5s ease 1.5s forwards;
         }
         
         @keyframes fadeIn {
@@ -732,11 +736,10 @@
     </style>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loading-screen" id="loadingScreen">
+    <div class="loading-screen" id="loadingScreen" style="display: flex">
         <div class="loader-wrapper">
             <div class="loader">
-                <img class="logo" src="https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752078815/owfyklhdlmocstmuhv6b.jpg" alt="logo">
+                <img class="logo" src="https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752062305/k6ddbc76uyomrd3yoop1.jpg" alt="logo">
                 <div class="ring blue"></div>
                 <div class="ring yellow"></div>
                 <div class="ring green1"></div>
@@ -744,8 +747,6 @@
             </div>
         </div>
     </div>
-    
-    <!-- Main Content -->
     <div class="scroll-progress" id="scrollProgress"></div>
     <div class="particles" id="particles"></div>
     <div class="decorative-corner corner-tl"></div>
@@ -774,7 +775,7 @@
                 </div>
                 <div class="btn-text">MOBILE LEGENDS</div>
             </div>
-            <div class="btn" id="ffBtn">
+            <div class="btn" id="ffBtn"> 
                 <div class="btn-icon">
                     <i class="fas fa-skull-crossbones"></i>
                 </div>
@@ -826,90 +827,143 @@
         Developer © dizflyze
     </div>
     <script>
-        const preloadImage = (src) => {
-            return new Promise((resolve) => {
-                const img = new Image();
-                img.src = src;
-                img.onload = resolve;
-            });
-        };
-        preloadImage('https://res.cloudinary.com/dtjjgiitl/image/upload/q_auto:good,f_auto,fl_progressive/v1752078815/owfyklhdlmocstmuhv6b.jpg')
-            .then(() => {
-                document.getElementById('loadingScreen').style.display = 'flex';
+        document.addEventListener('DOMContentLoaded', function() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            
+            window.addEventListener('load', function() {
                 setTimeout(() => {
-                    const loadingScreen = document.getElementById('loadingScreen');
                     loadingScreen.classList.add('hidden');
                     initMainContent();
-                }, 6000);
+                }, 3500);
             });
-        
+        });
+
         function initMainContent() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 25;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                const size = Math.random() * 5 + 2;
-                const posX = Math.random() * 100;
-                const posY = Math.random() * 100;
-                const delay = Math.random() * 15;
-                const duration = Math.random() * 10 + 10;
-                
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                particle.style.left = `${posX}%`;
-                particle.style.top = `${posY}%`;
-                particle.style.animationDelay = `${delay}s`;
-                particle.style.animationDuration = `${duration}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-            const themeToggle = document.getElementById('themeToggle');
-            themeToggle.addEventListener('click', function() {
-                document.body.classList.toggle('light-mode');
-                
-                const icon = themeToggle.querySelector('i');
-                if (document.body.classList.contains('light-mode')) {
-                    icon.classList.remove('fa-moon');
-                    icon.classList.add('fa-sun');
-                    themeToggle.classList.add('active');
-                    setTimeout(() => themeToggle.classList.remove('active'), 1500);
-                } else {
-                    icon.classList.remove('fa-sun');
-                    icon.classList.add('fa-moon');
-                    themeToggle.classList.add('active');
-                    setTimeout(() => themeToggle.classList.remove('active'), 1500);
-                }
-            });
-            const scrollProgress = document.getElementById('scrollProgress');
-            window.addEventListener('scroll', function() {
-                const scrollTop = document.documentElement.scrollTop;
-                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-                const scrolled = (scrollTop / scrollHeight) * 100;
-                scrollProgress.style.width = `${scrolled}%`;
-            });
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { threshold: 0.1 });
-            
-            document.querySelectorAll('.header, .section-title, .btn, .footer, .decorative-corner').forEach(el => {
-                observer.observe(el);
-            });
-            const buttons = document.querySelectorAll('.btn');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.classList.add('active');
-                    setTimeout(() => this.classList.remove('active'), 500);
-                });
-            });
-            document.documentElement.style.overflow = 'auto';
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 25;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        const size = Math.random() * 5 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const delay = Math.random() * 9;
+        const duration = Math.random() * 7 + 7;
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.animationDelay = `${delay}s`;
+        particle.style.animationDuration = `${duration}s`;
+        
+        particlesContainer.appendChild(particle);
+    }
+    
+    const themeToggle = document.getElementById('themeToggle');
+    themeToggle.addEventListener('click', function() {
+        document.body.classList.toggle('light-mode');
+        
+        const icon = themeToggle.querySelector('i');
+        if (document.body.classList.contains('light-mode')) {
+            icon.classList.remove('fa-moon');
+            icon.classList.add('fa-sun');
+            themeToggle.classList.add('active');
+            setTimeout(() => themeToggle.classList.remove('active'), 1500);
+        } else {
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+            themeToggle.classList.add('active');
+            setTimeout(() => themeToggle.classList.remove('active'), 1500);
         }
-    </script>
+    });
+    
+    // ===========  BAGIAN SETELAH CLICK BUTON =========== 
+    
+    document.getElementById('ttBtn').addEventListener('click', function() {
+        this.classList.add('active');
+        setTimeout(() => {
+            window.open('https://tiktok.com/@dizflyze', '_blank');
+            this.classList.remove('active');
+        }, 1000);
+    });
+    document.getElementById('mlBtn').addEventListener('click', function() {
+        this.classList.add('active');
+        setTimeout(() => {
+            window.open('https://wa.me/6288980724038', '_blank');
+            this.classList.remove('active');
+        }, 1000);
+    });
+    document.getElementById('scBtn').addEventListener('click', function() {
+        this.classList.add('active');
+        setTimeout(() => {
+            window.open('https://wa.me/6288980724038', '_blank');
+            this.classList.remove('active');
+        }, 1000);
+    });
+    document.getElementById('danaBtn').addEventListener('click', function() {
+        this.classList.add('active');
+        setTimeout(() => {
+            window.open('https://link.dana.id/minta?full_url=https://qr.dana.id/v1/281012092025071057356965', '_blank');
+            this.classList.remove('active');
+        }, 1000);
+    });
+    document.getElementById('ytBtn').addEventListener('click', function() {
+        this.classList.add('active');
+        setTimeout(() => {
+            window.open('https://youtube.com/@dizflyze999', '_blank');
+            this.classList.remove('active');
+        }, 1000);
+    });
+    document.getElementById('webBtn').addEventListener('click', function() {
+        this.classList.add('active');
+        setTimeout(() => {
+            window.open('https://wa.me/6288980724038', '_blank');
+            this.classList.remove('active');
+        }, 1000);
+    });
+    document.getElementById('ffBtn').addEventListener('click', function() {
+        this.classList.add('active');
+        setTimeout(() => {
+            window.open('https://wa.me/6288980724038', '_blank');
+            this.classList.remove('active');
+        }, 1000);
+    });
+    
+    // =========== LANJUAN ===========
+
+    const scrollProgress = document.getElementById('scrollProgress');
+    window.addEventListener('scroll', function() {
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (scrollTop / scrollHeight) * 100;
+        scrollProgress.style.width = `${scrolled}%`;
+    });
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+    
+    document.querySelectorAll('.header, .section-title, .btn, .footer, .decorative-corner').forEach(el => {
+        observer.observe(el);
+    });
+    
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            this.classList.add('active');
+            setTimeout(() => this.classList.remove('active'), 500);
+        });
+    });
+    
+    document.documentElement.style.overflow = 'auto';
+}
+</script>
 </body>
 </html>
